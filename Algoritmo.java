@@ -4,13 +4,8 @@ import java.util.Arrays;
 
 public class MatrizEscalonadaReduzida {
 
-    private static final double EPSILON = 1e-10; // Tolerância para ponto flutuante
+    private static final double EPSILON = 1e-10;
 
-    /**
-     * Transforma a matriz dada para a sua Forma Escalonada Reduzida por Linhas (RREF).
-     * A matriz original é modificada.
-     * @param matriz A matriz a ser transformada.
-     */
     public static void transformarParaRREF(double[][] matriz) {
         if (matriz == null || matriz.length == 0) return;
 
