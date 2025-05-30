@@ -1,8 +1,9 @@
 package MatrizEscalonada;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
-public class MatrizEscalonadaReduzida {
+class MatrizEscalonadaReduzida {
 
     private static final double EPSILON = 1e-10;
 
@@ -81,16 +82,33 @@ public class MatrizEscalonadaReduzida {
         System.out.println();
     }
 
+    public static double [][] receberMatriz () {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o número de linhas da matriz: ");
+        int linhas = scanner.nextInt();
+        System.out.print("Digite o número de colunas da matriz: ");
+        int colunas = scanner.nextInt();
+
+        double[][] m = new double[linhas][colunas];
+
+        System.out.println("Digite os elementos da matriz:");
+        for (int i = 0; i < linhas; i++) {
+            for (int j = 0; j < colunas; j++) {
+                System.out.print("Elemento [" + i + "][" + j + "]: ");
+                m[i][j] = scanner.nextDouble();
+
+            }
+        }
+        return m;
+    }
+
     public static void main(String[] args) {
-        double[][] m = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
-        };
+        double [][] matriz = receberMatriz();
         System.out.println("Matriz original:");
-        imprimirMatriz(m);
-        transformarParaRREF(m);
+        imprimirMatriz(matriz);
+        transformarParaRREF(matriz);
         System.out.println("Forma Escalonada Reduzida (RREF):");
-        imprimirMatriz(m);
+        imprimirMatriz(matriz);
     }
 }
