@@ -81,7 +81,7 @@ class MatrizEscalonadaReduzida {
         }
         System.out.println();
     }
-
+    // Recebe tamanho da matriz e seus valores
     public static double [][] receberMatriz () {
         Scanner scanner = new Scanner(System.in);
 
