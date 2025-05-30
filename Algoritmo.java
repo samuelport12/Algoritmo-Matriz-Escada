@@ -1,9 +1,6 @@
 package MatrizEscalonada;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
-class MatrizEscalonadaReduzida {
+class Algoritimo {
 
     private static final double EPSILON = 1e-10;
 
@@ -23,12 +20,10 @@ class MatrizEscalonadaReduzida {
                     linhaMax = i;
                 }
             }
-            if (Math.abs(matriz[linhaMax][colunaPivo]) < EPSILON) {
-                colunaPivo++;
-            } else {
+            if (!(Math.abs(matriz[linhaMax][colunaPivo]) < EPSILON)) {
                 trocarLinhas(matriz, linhaPivo, linhaMax);
                 double piv = matriz[linhaPivo][colunaPivo];
-                
+
                 for (int j = colunaPivo; j < numColunas; j++) {
                     matriz[linhaPivo][j] /= piv;
                 }
@@ -47,11 +42,11 @@ class MatrizEscalonadaReduzida {
                     }
                 }
                 linhaPivo++;
-                colunaPivo++;
             }
+            colunaPivo++;
         }
 
-       
+
         for (int i = 0; i < numLinhas; i++) {
             for (int j = 0; j < numColunas; j++) {
                 double rounded = Math.round(matriz[i][j]);
@@ -70,45 +65,6 @@ class MatrizEscalonadaReduzida {
         m[r2] = temp;
     }
 
-    // Imprime a matriz de forma legível
-    public static void imprimirMatriz(double[][] matriz) {
-        if (matriz == null) {
-            System.out.println("Matriz nula.");
-            return;
-        }
-        for (double[] linha : matriz) {
-            System.out.println(Arrays.toString(linha));
-        }
-        System.out.println();
-    }
-    // Recebe tamanho da matriz e seus valores
-    public static double [][] receberMatriz () {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Digite o número de linhas da matriz: ");
-        int linhas = scanner.nextInt();
-        System.out.print("Digite o número de colunas da matriz: ");
-        int colunas = scanner.nextInt();
-
-        double[][] m = new double[linhas][colunas];
-
-        System.out.println("Digite os elementos da matriz:");
-        for (int i = 0; i < linhas; i++) {
-            for (int j = 0; j < colunas; j++) {
-                System.out.print("Elemento [" + i + "][" + j + "]: ");
-                m[i][j] = scanner.nextDouble();
-
-            }
-        }
-        return m;
-    }
-
-    public static void main(String[] args) {
-        double [][] matriz = receberMatriz();
-        System.out.println("Matriz original:");
-        imprimirMatriz(matriz);
-        transformarParaRREF(matriz);
-        System.out.println("Forma Escalonada Reduzida (RREF):");
-        imprimirMatriz(matriz);
-    }
 }
+
+
